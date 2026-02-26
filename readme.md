@@ -1,10 +1,4 @@
-# 📄 PDF to JSON Processor
-
-A full-stack application that extracts text from PDF files, processes them using OpenAI's LLM, and returns structured JSON data to the UI.
-
----
-
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -41,18 +35,23 @@ npm run dev
 npm run dev
 ```
 
-# 🔄 System Flow
-The application follows a linear processing pipeline:
+# Objective
 
-- Upload: Client sends the PDF file to the backend.
+The goal of this system is to process uploaded documents and automatically structure their content in a way that supports ISO/IEC 27001 compliance analysis and control mapping.
 
-- Parsing: Server parses the raw PDF text.
+# System Work Flow
 
-- Chunking: Text is broken into smaller, manageable chunks for the LLM.
+Upload the PDF
+The user uploads a PDF file through the application interface.
 
-- Processing: Chunks are sent to OpenAI for analysis.
+Parse the PDF
+The uploaded file is parsed using the pdf-parse library to extract raw textual content.
 
-- Finalization: Responses are aggregated into a single JSON object and sent back to the UI.
+Chunk the Extracted Data
+The extracted text is divided into smaller chunks to ensure efficient processing and to stay within the LLM token limits.
 
-<img src="draw.png" alt="flow-diagram" width="600"/>
+Send Chunks to the LLM
+Each chunk is sent to the LLM (OpenAI) along with a predefined master prompt.
 
+Convert to Structured JSON
+The LLM processes the content and converts it into the required JSON structure, which is then rendered on the UI.
