@@ -9,6 +9,7 @@ A full-stack application that extracts text from PDF files, processes them using
 ### Prerequisites
 
 - **Node.js** (v22 or higher)
+- **OpenAI** API KEY
 
 ### 1. Install Dependencies
 
