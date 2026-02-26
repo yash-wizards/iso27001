@@ -9,6 +9,7 @@ function App() {
   const [pdf, setPdf] = useState(null);
   const [openAiApiKey, setOpenAiApiKey] = useState("");
   const [pdfData, setPdfData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
 
   const handleInputOpen = () => {
@@ -20,7 +21,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     if (!pdf) return alert("Please select a PDF first");
-
+    setLoading(true);
     const formData = new FormData();
     formData.append("pdf", pdf);
     formData.append("apiKey", openAiApiKey);
@@ -33,9 +34,10 @@ function App() {
       });
       console.log("Success:", res);
       setPdfData(res.data.data);
-
+      setLoading(false);
       alert("Upload Successful!");
     } catch (error) {
+      setLoading(false);
       console.error(error);
       alert(error.response.data.message || "Upload failed. Check console.");
     }
@@ -78,7 +80,7 @@ function App() {
               onClick={handleSubmit}
               className="py-2 px-4 rounded-lg bg-blue-500 text-white  font-semibold cursor-pointer"
             >
-              Submit pdf
+              {loading ? "Loading..." : "Submit pdf"}
             </button>
           )}
         </div>
