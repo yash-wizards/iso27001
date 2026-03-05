@@ -24,12 +24,14 @@ cd server && npm install
 You need start both the frontend and backend in different terminals from the root directory:
 
 ## Frontend
+Go to client folder and then run
 
 ```Bash
 npm run dev
 ```
 
 ## Backend
+Go to server folder and then run
 
 ```Bash
 npm run dev
